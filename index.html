@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shadows of Asia | Endangered Wildlife</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        forest: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            800: '#166534',
+                            900: '#14532d',
+                            950: '#052e16',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #052e16; }
+        ::-webkit-scrollbar-thumb { background: #166534; border-radius: 5px; }
+        ::-webkit-scrollbar-thumb:hover { background: #15803d; }
+
+        /* Scroll Reveal Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero Parallax & Fade */
+        .hero-bg {
+            background-image: linear-gradient(rgba(5, 46, 22, 0.7), rgba(5, 46, 22, 0.9)), url('https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        /* Image Hover Overlay */
+        .card-overlay {
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);
+        }
+
+        /* Modal Animation */
+        #modal-backdrop {
+            transition: opacity 0.3s ease;
+        }
+        #modal-content {
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+    </style>
+</head>
+<body class="bg-forest-950 text-gray-200 font-sans antialiased overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-serif font-bold text-white tracking-wider flex items-center gap-2">
+                <i class="fa-solid fa-leaf text-green-500"></i> AsiaWild
+            </a>
+            <div class="hidden md:flex space-x-8 text-sm font-medium">
+                <a href="#home" class="hover:text-green-400 transition-colors">Home</a>
+                <a href="#species" class="hover:text-green-400 transition-colors">Endangered Species</a>
+                <a href="#crisis" class="hover:text-green-400 transition-colors">The Crisis</a>
+            </div>
+            <button class="md:hidden text-white focus:outline-none">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen flex items-center justify-center hero-bg">
+        <div class="text-center px-4 max-w-4xl mx-auto mt-20">
+            <span class="block text-green-400 font-semibold tracking-widest uppercase mb-4 reveal delay-100">Preserve Our Heritage</span>
+            <h1 class="text-5xl md:text-7xl font-serif font-bold text-white mb-6 leading-tight reveal delay-200">
+                Fading Shadows of <br> <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-600">Asia's Wildlife</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto reveal delay-300">
+                From the dense rainforests of Sumatra to the high peaks of the Himalayas, Asia's most majestic creatures are on the brink of extinction.
+            </p>
+            <div class="reveal delay-400">
+                <a href="#species" class="inline-flex items-center gap-2 bg-green-600 hover:bg-green-500 text-white px-8 py-4 rounded-full font-semibold transition-all hover:shadow-[0_0_20px_rgba(22,163,74,0.4)] hover:-translate-y-1">
+                    Discover the Species <i class="fa-solid fa-arrow-down"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section id="crisis" class="py-20 bg-forest-900 border-t border-forest-800">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
+                <div class="p-8 rounded-2xl bg-forest-950/50 border border-forest-800 reveal">
+                    <i class="fa-solid fa-chart-line text-4xl text-red-500 mb-4"></i>
+                    <h3 class="text-4xl font-bold text-white mb-2">73%</h3>
+                    <p class="text-gray-400">Decline in global wildlife populations since 1970 due to human activity.</p>
+                </div>
+                <div class="p-8 rounded-2xl bg-forest-950/50 border border-forest-800 reveal delay-100">
+                    <i class="fa-solid fa-tree text-4xl text-green-500 mb-4"></i>
+                    <h3 class="text-4xl font-bold text-white mb-2">Habitat Loss</h3>
+                    <p class="text-gray-400">The leading cause of extinction in Asia, primarily driven by deforestation and agriculture.</p>
+                </div>
+                <div class="p-8 rounded-2xl bg-forest-950/50 border border-forest-800 reveal delay-200">
+                    <i class="fa-solid fa-scale-unbalanced text-4xl text-orange-500 mb-4"></i>
+                    <h3 class="text-4xl font-bold text-white mb-2">$20B+</h3>
+                    <p class="text-gray-400">The estimated annual value of the illegal global wildlife trade threatening these animals.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Grid Section -->
+    <section id="species" class="py-24 bg-forest-950">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-white mb-4">Critically Endangered</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Click on the interactive cards below to learn more about the specific threats facing these incredible animals and how many remain in the wild.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="animal-grid">
+                <!-- Cards injected via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-24 relative overflow-hidden">
+        <div class="absolute inset-0 bg-green-900 opacity-20"></div>
+        <div class="max-w-4xl mx-auto px-6 text-center relative z-10 reveal">
+            <h2 class="text-4xl font-serif font-bold text-white mb-6">Their Survival is in Our Hands</h2>
+            <p class="text-xl text-gray-300 mb-10">Awareness is the first step. Supporting conservation efforts, fighting illegal wildlife trade, and preserving natural habitats can turn the tide for Asia's endangered species.</p>
+            <button class="bg-white text-forest-900 px-8 py-3 rounded-full font-bold hover:bg-gray-200 transition-colors shadow-lg">
+                Support Conservation NGOs
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-8 text-center text-gray-500 border-t border-forest-900">
+        <p>&copy; 2026 AsiaWild Conservation Awareness. Designed for Educational Purposes.</p>
+    </footer>
+
+    <!-- Interactive Modal -->
+    <div id="modal-container" class="fixed inset-0 z-[100] hidden items-center justify-center px-4">
+        <div id="modal-backdrop" class="absolute inset-0 bg-black/80 backdrop-blur-sm opacity-0 cursor-pointer"></div>
+        
+        <div id="modal-content" class="relative bg-forest-900 border border-forest-700 w-full max-w-4xl rounded-2xl overflow-hidden shadow-2xl flex flex-col md:flex-row scale-95 opacity-0">
+            <!-- Modal Close Button -->
+            <button id="close-modal" class="absolute top-4 right-4 z-10 bg-black/50 hover:bg-red-500 text-white w-10 h-10 rounded-full flex items-center justify-center transition-colors">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+
+            <!-- Modal Image -->
+            <div class="md:w-1/2 h-64 md:h-auto relative">
+                <img id="modal-img" src="" alt="Animal" class="absolute inset-0 w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-forest-900 to-transparent"></div>
+            </div>
+
+            <!-- Modal Info -->
+            <div class="md:w-1/2 p-8 md:p-10 flex flex-col justify-center">
+                <div class="inline-flex items-center gap-2 mb-3">
+                    <span class="px-3 py-1 bg-red-500/20 text-red-400 border border-red-500/30 rounded-full text-xs font-bold tracking-wider uppercase" id="modal-status"></span>
+                </div>
+                <h2 id="modal-title" class="text-3xl md:text-4xl font-serif font-bold text-white mb-2"></h2>
+                <p id="modal-scientific" class="text-green-400 italic mb-6"></p>
+                
+                <div class="space-y-4 mb-8">
+                    <div>
+                        <h4 class="text-xs text-gray-400 uppercase tracking-widest font-bold mb-1">Population Left</h4>
+                        <p id="modal-population" class="text-xl text-white font-semibold flex items-center gap-2">
+                            <i class="fa-solid fa-users text-green-500"></i> <span></span>
+                        </p>
+                    </div>
+                    <div>
+                        <h4 class="text-xs text-gray-400 uppercase tracking-widest font-bold mb-1">Primary Threats</h4>
+                        <p id="modal-threats" class="text-gray-300"></p>
+                    </div>
+                </div>
+                
+                <p id="modal-desc" class="text-gray-400 leading-relaxed text-sm"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript for Interactivity and Animations -->
+    <script>
+        // Animal Data
+        const animals = [
+            {
+                id: 1,
+                name: "Sumatran Tiger",
+                scientific: "Panthera tigris sondaica",
+                status: "Critically Endangered",
+                population: "~ 400 in the wild",
+                image: "https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3?auto=format&fit=crop&w=800&q=80",
+                threats: "Habitat loss (deforestation for palm oil) and intense poaching for their body parts.",
+                description: "The Sumatran tiger is the smallest surviving tiger subspecies. They are found only on the Indonesian island of Sumatra. Expanding agriculture and human settlement are fragmenting their habitats, forcing them into conflict with humans."
+            },
+            {
+                id: 2,
+                name: "Sumatran Orangutan",
+                scientific: "Pongo abelii",
+                status: "Critically Endangered",
+                population: "~ 14,000 remaining",
+                image: "https://images.unsplash.com/photo-1541335967-897db6746888?auto=format&fit=crop&w=800&q=80",
+                threats: "Rapid habitat loss from logging, forest fires, and conversion of land to palm oil plantations.",
+                description: "Known as the 'gardeners of the forest', these highly intelligent great apes spend almost their entire lives in trees. They are essential to the ecosystem for seed dispersal, but their forest homes are rapidly disappearing."
+            },
+            {
+                id: 3,
+                name: "Javan Rhinoceros",
+                scientific: "Rhinoceros sondaicus",
+                status: "Critically Endangered",
+                population: "Only ~ 76 individuals",
+                image: "https://images.unsplash.com/photo-1543204981-64d1f274a753?auto=format&fit=crop&w=800&q=80",
+                threats: "Poaching for their horns and extreme vulnerability to natural disasters.",
+                description: "The Javan rhino is the rarest of the rhino species. They are now confined to a single national park (Ujung Kulon) on the island of Java, making them highly susceptible to disease and tsunamis."
+            },
+            {
+                id: 4,
+                name: "Asian Elephant",
+                scientific: "Elephas maximus",
+                status: "Endangered",
+                population: "40,000 - 50,000",
+                image: "https://images.unsplash.com/photo-1585620955940-025cdfa5017c?auto=format&fit=crop&w=800&q=80",
+                threats: "Habitat fragmentation, human-wildlife conflict, and poaching for ivory.",
+                description: "Asian elephants are gentle giants that require vast amounts of land. As human populations grow and encroach on their territory, deadly conflicts occur. They are also culturally significant across Asia."
+            }
+        ];
+
+        // Render Animal Cards
+        const grid = document.getElementById('animal-grid');
+        
+        animals.forEach((animal, index) => {
+            const delay = index * 100;
+            const cardHTML = `
+                <div class="reveal group relative h-96 rounded-2xl overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-300" 
+                     style="transition-delay: ${delay}ms;"
+                     onclick="openModal(${animal.id})">
+                    
+                    <!-- Background Image with Zoom effect -->
+                    <img src="${animal.image}" alt="${animal.name}" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    
+                    <!-- Gradient Overlay -->
+                    <div class="absolute inset-0 card-overlay transition-opacity duration-300 group-hover:opacity-90"></div>
+                    
+                    <!-- Content -->
+                    <div class="absolute inset-0 p-6 flex flex-col justify-end">
+                        <div class="mb-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <span class="inline-block px-2 py-1 bg-red-600 text-white text-xs font-bold rounded mb-2">${animal.status}</span>
+                            <h3 class="text-2xl font-serif font-bold text-white">${animal.name}</h3>
+                        </div>
+                        
+                        <!-- Hidden info that appears on hover -->
+                        <div class="h-0 opacity-0 group-hover:h-auto group-hover:opacity-100 group-hover:mt-3 transition-all duration-300 delay-100">
+                            <p class="text-sm text-gray-300 line-clamp-2">${animal.threats}</p>
+                            <span class="inline-block mt-3 text-green-400 font-semibold text-sm hover:text-green-300">
+                                Click to learn more <i class="fa-solid fa-arrow-right ml-1"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            grid.insertAdjacentHTML('beforeend', cardHTML);
+        });
+
+        // Scroll Animations (Intersection Observer)
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); // Stop observing once revealed
+                }
+            });
+        };
+
+        const revealOptions = {
+            threshold: 0.15, // Trigger when 15% of element is visible
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const revealObserver = new IntersectionObserver(revealCallback, revealOptions);
+        
+        // Trigger observer after a short delay for elements already in view on load
+        setTimeout(() => {
+            revealElements.forEach(el => revealObserver.observe(el));
+        }, 100);
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-forest-950/90', 'backdrop-blur-md', 'shadow-lg');
+            } else {
+                nav.classList.remove('bg-forest-950/90', 'backdrop-blur-md', 'shadow-lg');
+            }
+        });
+
+        // Modal Logic
+        const modalContainer = document.getElementById('modal-container');
+        const modalBackdrop = document.getElementById('modal-backdrop');
+        const modalContent = document.getElementById('modal-content');
+        const closeModalBtn = document.getElementById('close-modal');
+
+        function openModal(id) {
+            const animal = animals.find(a => a.id === id);
+            if (!animal) return;
+
+            // Populate Data
+            document.getElementById('modal-img').src = animal.image;
+            document.getElementById('modal-title').textContent = animal.name;
+            document.getElementById('modal-scientific').textContent = animal.scientific;
+            document.getElementById('modal-status').textContent = animal.status;
+            document.querySelector('#modal-population span').textContent = animal.population;
+            document.getElementById('modal-threats').textContent = animal.threats;
+            document.getElementById('modal-desc').textContent = animal.description;
+
+            // Show Modal
+            modalContainer.classList.remove('hidden');
+            modalContainer.classList.add('flex');
+            
+            // Trigger Animations
+            setTimeout(() => {
+                modalBackdrop.classList.remove('opacity-0');
+                modalBackdrop.classList.add('opacity-100');
+                modalContent.classList.remove('scale-95', 'opacity-0');
+                modalContent.classList.add('scale-100', 'opacity-100');
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            }, 10);
+        }
+
+        function closeModal() {
+            // Animate out
+            modalBackdrop.classList.remove('opacity-100');
+            modalBackdrop.classList.add('opacity-0');
+            modalContent.classList.remove('scale-100', 'opacity-100');
+            modalContent.classList.add('scale-95', 'opacity-0');
+            
+            // Hide after animation finishes
+            setTimeout(() => {
+                modalContainer.classList.add('hidden');
+                modalContainer.classList.remove('flex');
+                document.body.style.overflow = 'auto'; // Restore scrolling
+            }, 300);
+        }
+
+        // Event Listeners for Modal
+        closeModalBtn.addEventListener('click', closeModal);
+        modalBackdrop.addEventListener('click', closeModal);
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modalContainer.classList.contains('hidden')) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
