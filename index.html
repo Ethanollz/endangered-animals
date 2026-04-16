@@ -46,14 +46,6 @@
             transform: translateY(0);
         }
 
-        /* Hero Parallax & Fade */
-        .hero-bg {
-            background-image: linear-gradient(rgba(5, 46, 22, 0.7), rgba(5, 46, 22, 0.9)), url('https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3?auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-
         /* Image Hover Overlay */
         .card-overlay {
             background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);
@@ -87,9 +79,21 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="relative h-screen flex items-center justify-center hero-bg">
-        <div class="text-center px-4 max-w-4xl mx-auto mt-20">
+    <!-- Hero Section with Video Background -->
+    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
+        
+        <!-- HTML5 Video Background -->
+        <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover z-0">
+            <source src="./hero-background.mp4" type="video/mp4">
+            <!-- Fallback text if video is not supported -->
+            Your browser does not support the video tag.
+        </video>
+        
+        <!-- Dark Overlay for Readability -->
+        <div class="absolute inset-0 bg-forest-950/70 z-0 mix-blend-multiply"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-forest-950 z-0"></div>
+
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto mt-20">
             <span class="block text-green-400 font-semibold tracking-widest uppercase mb-4 reveal delay-100">Preserve Our Heritage</span>
             <h1 class="text-5xl md:text-7xl font-serif font-bold text-white mb-6 leading-tight reveal delay-200">
                 Fading Shadows of <br> <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-600">Asia's Wildlife</span>
@@ -203,7 +207,7 @@
 
     <!-- JavaScript for Interactivity and Animations -->
     <script>
-        // Animal Data
+        // Animal Data - Updated with local file paths
         const animals = [
             {
                 id: 1,
@@ -211,7 +215,7 @@
                 scientific: "Panthera tigris sondaica",
                 status: "Critically Endangered",
                 population: "~ 400 in the wild",
-                image: "https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3?auto=format&fit=crop&w=800&q=80",
+                image: "./sumatran-tiger.jpg",
                 threats: "Habitat loss (deforestation for palm oil) and intense poaching for their body parts.",
                 description: "The Sumatran tiger is the smallest surviving tiger subspecies. They are found only on the Indonesian island of Sumatra. Expanding agriculture and human settlement are fragmenting their habitats, forcing them into conflict with humans."
             },
@@ -221,7 +225,7 @@
                 scientific: "Pongo abelii",
                 status: "Critically Endangered",
                 population: "~ 14,000 remaining",
-                image: "https://images.unsplash.com/photo-1541335967-897db6746888?auto=format&fit=crop&w=800&q=80",
+                image: "./sumatran-orangutan.jpg",
                 threats: "Rapid habitat loss from logging, forest fires, and conversion of land to palm oil plantations.",
                 description: "Known as the 'gardeners of the forest', these highly intelligent great apes spend almost their entire lives in trees. They are essential to the ecosystem for seed dispersal, but their forest homes are rapidly disappearing."
             },
@@ -231,7 +235,7 @@
                 scientific: "Rhinoceros sondaicus",
                 status: "Critically Endangered",
                 population: "Only ~ 76 individuals",
-                image: "https://images.unsplash.com/photo-1543204981-64d1f274a753?auto=format&fit=crop&w=800&q=80",
+                image: "./javan-rhinoceros.jpg",
                 threats: "Poaching for their horns and extreme vulnerability to natural disasters.",
                 description: "The Javan rhino is the rarest of the rhino species. They are now confined to a single national park (Ujung Kulon) on the island of Java, making them highly susceptible to disease and tsunamis."
             },
@@ -241,7 +245,7 @@
                 scientific: "Elephas maximus",
                 status: "Endangered",
                 population: "40,000 - 50,000",
-                image: "https://images.unsplash.com/photo-1585620955940-025cdfa5017c?auto=format&fit=crop&w=800&q=80",
+                image: "./asian-elephant.jpg",
                 threats: "Habitat fragmentation, human-wildlife conflict, and poaching for ivory.",
                 description: "Asian elephants are gentle giants that require vast amounts of land. As human populations grow and encroach on their territory, deadly conflicts occur. They are also culturally significant across Asia."
             }
